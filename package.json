@@ -16,5 +16,19 @@
   "bugs": {
     "url": "https://github.com/usman-tahir/vue-exclamations-app/issues"
   },
-  "homepage": "https://github.com/usman-tahir/vue-exclamations-app#readme"
+  "homepage": "https://github.com/usman-tahir/vue-exclamations-app#readme",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "connect-mongo": "^1.3.2",
+    "express": "^4.15.4",
+    "express-session": "^1.15.5",
+    "flash": "^1.1.0",
+    "node-uuid": "^1.4.8",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pug": "^2.0.0-rc.4"
+  }
 }
