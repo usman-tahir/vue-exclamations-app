@@ -106,3 +106,27 @@ function isAuthenticated(req, res, next) {
 
   return next();
 }
+
+// Home route
+server.get('/', (req, res) => {
+  if (req.user) {
+    return res.redirect('/dashboard');
+  }
+
+  return res.render('index');
+});
+
+server.get('/dashboard', isAuthenticated, (req, res) => {
+  res.render('dashboard');
+});
+
+// Authenticated routes
+const authRoutes = express.Router();
+
+authRoutes.post('/login', passport.authenticate('local', {
+  failureRedirect: '/',
+  successRedirect: '/dashboard',
+  failureFlash: true
+}));
+
+server.use('/auth', authRoutes);
