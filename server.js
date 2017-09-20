@@ -41,3 +41,29 @@ server.use(passport.initialize());
 server.use(passport.session());
 server.set('views', './views');
 server.set('view engine', 'pug');
+
+// Configure passport
+passport.use(new LocalStrategy((username, password, done) => {
+  const user = getUser(username);
+
+  if (!user || user.password !== password) {
+    return done(null, false, {message: 'Username and password combination incorrect.'})
+  }
+
+  delete user.password;
+
+  return done(null, user);
+}));
+
+// Serialize the current user in the session
+passport.serializeUser((user, done) => {
+  done(null, user.username);
+});
+
+passport.deserializeUser((username, done) => {
+  const user = getUser(username);
+
+  delete user.password;
+
+  done(null, user);
+});
