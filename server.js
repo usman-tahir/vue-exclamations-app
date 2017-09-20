@@ -67,3 +67,42 @@ passport.deserializeUser((username, done) => {
 
   done(null, user);
 });
+
+// Custom middleware functions
+function hasScope(scope) {
+  return (req, res, next) => {
+    const {scopes} = req.user;
+
+    if(!sscopes.includes(scope)) {
+      req.flash('error', 'The username and password are not valid.');
+      return res.redirect('/');
+    }
+
+    return next();
+  };
+}
+
+function canDelete(req, res, next) {
+  const {scopes, username} = req.user;
+  const {id} = req.params;
+  const exclamation = exclamationData.find(exc => exc.id === id);
+
+  if (!exclamation) {
+    return res.sendStatus(404);
+  }
+
+  if (exclamation.user !== username && !scopes.includes('delete')) {
+    return res.status(403).json({message: 'You can\'t delete that exclamation.'});
+  }
+
+  return next();
+}
+
+function isAuthenticated(req, res, next) {
+  if (!req.user) {
+    req.flash('error', 'You must be logged in');
+    return res.redirect('/');
+  }
+
+  return next();
+}
