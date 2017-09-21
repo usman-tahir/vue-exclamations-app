@@ -19,9 +19,21 @@
   },
   "homepage": "https://github.com/usman-tahir/vue-exclamations-app#readme",
   "devDependencies": {
-    "nodemon": "^1.12.1"
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
+    "browserify-hmr": "^0.3.5",
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.12.1",
+    "vue-hot-reload-api": "^2.1.0",
+    "vueify": "^9.4.1",
+    "watchify": "^3.9.0"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "body-parser": "^1.18.1",
     "connect-mongo": "^1.3.2",
     "express": "^4.15.4",
@@ -30,6 +42,7 @@
     "node-uuid": "^1.4.8",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "pug": "^2.0.0-rc.4"
+    "pug": "^2.0.0-rc.4",
+    "vue": "^2.4.4"
   }
 }
