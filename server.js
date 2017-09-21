@@ -136,7 +136,7 @@ const apiRoutes = express.Router();
 
 apiRoutes.use(isAuthenticated);
 
-apiRoutes('/me', (req, res) => {
+apiRoutes.get('/me', (req, res) => {
   res.json({user: req.user});
 });
 
