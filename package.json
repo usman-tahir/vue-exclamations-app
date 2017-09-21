@@ -4,8 +4,10 @@
   "description": "A VueJS 2 application that uses PassportJS for authentication",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "serve": "nodemon server.js"
+    "prestart": "npm run build:js",
+    "build:js": "browserify src/app.js -t vueify -p [ vueify/plugins/extract-css -o public/styles.bundle.css ] -t babelify -o public/app.bundle.js",
+    "watch:js": "watchify src/app.js -t vueify -t babelify -p browserify-hmr -p [ vueify/plugins/extract-css -o public/styles.bundle.css ] -o public/app.bundle.js",
+    "dev": "concurrently \"npm run serve\" \"npm run watch:js\""
   },
   "repository": {
     "type": "git",
