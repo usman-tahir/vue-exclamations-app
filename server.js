@@ -73,7 +73,7 @@ function hasScope(scope) {
   return (req, res, next) => {
     const {scopes} = req.user;
 
-    if(!sscopes.includes(scope)) {
+    if(!scopes.includes(scope)) {
       req.flash('error', 'The username and password are not valid.');
       return res.redirect('/');
     }
